@@ -34,7 +34,8 @@ $router->addMiddleware(function($uri) {
                 '/register' => '/register',
                 '/forgot-password' => '/forgot-password',
                 '/reset-password' => '/reset-password',
-                '/verify-email' => '/verify-email'
+                '/verify-email' => '/verify-email',
+                '/resend-code' => '/verify-email'
             ];
             
             if (isset($redirectMap[$uri])) {
@@ -455,6 +456,72 @@ $router->post('/api/chat', function() {
 
     header('Content-Type: application/json');
     echo json_encode($response);
+});
+
+$router->post('/api/upload-document', function() {
+    if (!Session::get('jwt_token')) {
+        http_response_code(401);
+        echo json_encode(['error' => 'Unauthorized']);
+        return;
+    }
+
+    if (!isset($_FILES['document']) || $_FILES['document']['error'] !== UPLOAD_ERR_OK) {
+        http_response_code(400);
+        echo json_encode(['error' => 'No valid file uploaded.']);
+        return;
+    }
+
+    $file = $_FILES['document'];
+    $filename = $file['name'];
+    $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+    
+    $text = "";
+    try {
+        if ($ext === 'pdf') {
+            $parser = new \Smalot\PdfParser\Parser();
+            $pdf = $parser->parseFile($file['tmp_name']);
+            $text = $pdf->getText();
+        } else if ($ext === 'csv' || $ext === 'txt') {
+            $text = file_get_contents($file['tmp_name']);
+        } else {
+            http_response_code(400);
+            echo json_encode(['error' => 'Unsupported file format. Please upload PDF, CSV, or TXT.']);
+            return;
+        }
+
+        // Clean up the text somewhat
+        $text = preg_replace('/\s+/', ' ', $text);
+        
+        if (strlen(trim($text)) < 10) {
+            http_response_code(400);
+            echo json_encode(['error' => 'Document contains no readable text.']);
+            return;
+        }
+
+        // Send extracted text to Rust Engine to generate and save embeddings
+        $apiResponse = ApiClient::post('/api/embeddings', [
+            'filename' => $filename,
+            'content' => $text,
+            'user_id' => Session::get('user_id'),
+            // Optionally pass project_id if the user is in a specific project context
+            // 'project_id' => Session::get('active_project_id') 
+        ]);
+
+        if ($apiResponse && !isset($apiResponse['error'])) {
+            echo json_encode([
+                'status' => 'success',
+                'message' => 'Document parsed and learned successfully!',
+                'filename' => $filename
+            ]);
+        } else {
+            http_response_code(500);
+            echo json_encode(['error' => $apiResponse['error'] ?? 'Engine failed to process document embeddings.']);
+        }
+
+    } catch (\Exception $e) {
+        http_response_code(500);
+        echo json_encode(['error' => 'Failed to parse document: ' . $e->getMessage()]);
+    }
 });
 
 $router->get('/dashboard', function() {

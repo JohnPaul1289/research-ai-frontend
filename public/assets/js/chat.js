@@ -14,6 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const agent = agentSelect ? agentSelect.value : 'Research Assistant';
         if (!message) return;
 
+        // Prevent chat if document is still uploading
+        if (chatInput.disabled) return;
+
         // Add user message to UI
         appendMessage('user', message);
         chatInput.value = '';
@@ -86,3 +89,54 @@ document.addEventListener('DOMContentLoaded', () => {
         chatContainer.scrollTop = chatContainer.scrollHeight;
     }
 });
+
+    // File Upload Logic
+    const fileUpload = document.getElementById("fileUpload");
+    const filePreview = document.getElementById("filePreview");
+    const fileName = document.getElementById("fileName");
+
+    window.clearFile = function() {
+        fileUpload.value = "";
+        filePreview.style.display = "none";
+    };
+
+    if (fileUpload) {
+        fileUpload.addEventListener("change", async function() {
+            if (!this.files || this.files.length === 0) return;
+            const file = this.files[0];
+            
+            fileName.textContent = file.name;
+            filePreview.style.display = "flex";
+
+            // Auto-upload the document for RAG parsing
+            appendMessage("ai", `Parsing document **${file.name}**... Please wait.`);
+            chatInput.disabled = true;
+            sendBtn.disabled = true;
+
+            const formData = new FormData();
+            formData.append("document", file);
+
+            try {
+                const response = await fetch("/api/upload-document", {
+                    method: "POST",
+                    body: formData
+                });
+                const data = await response.json();
+                
+                if (data.status === "success") {
+                    appendMessage("ai", `? **${file.name}** has been fully read and memorized! You can now ask me questions about it.`);
+                } else {
+                    appendMessage("ai", `? Failed to read document: ${data.error}`);
+                    clearFile();
+                }
+            } catch (err) {
+                appendMessage("ai", "? Network error while uploading document.");
+                clearFile();
+            } finally {
+                chatInput.disabled = false;
+                sendBtn.disabled = false;
+                chatInput.focus();
+            }
+        });
+    }
+

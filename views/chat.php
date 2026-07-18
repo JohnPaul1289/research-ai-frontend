@@ -306,12 +306,20 @@
         <!-- Input Area -->
         <div class="chat-input-area">
             <div class="input-wrapper" style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--glass-border); border-radius: 16px; padding: 6px; display: flex; align-items: center; gap: 8px; max-width: 900px; margin: 0 auto; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
-                
                 <form id="chatForm" style="flex: 1; display: flex; align-items: center; gap: 8px; margin: 0; width: 100%;">
-                    <input type="text" id="chatInput" class="chat-input" placeholder="Ask me anything about your research..." required autocomplete="off" style="flex: 1; background: transparent; border: none; box-shadow: none; color: white; padding: 10px 15px; outline: none; min-width: 0;">
+                    <input type="file" id="fileUpload" accept=".pdf,.csv,.txt" style="display: none;">
+                    <button type="button" class="btn btn-link text-white text-decoration-none px-2" onclick="document.getElementById('fileUpload').click()" title="Attach Document (PDF, CSV, TXT)" style="opacity: 0.7; transition: opacity 0.3s; flex-shrink: 0; font-size: 1.1rem;">
+                        <i class="fa-solid fa-paperclip"></i>
+                    </button>
+                    
+                    <div id="filePreview" style="display: none; align-items: center; background: rgba(99,102,241,0.2); padding: 4px 10px; border-radius: 12px; font-size: 0.8rem; border: 1px solid rgba(99,102,241,0.3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 150px;">
+                        <i class="fa-solid fa-file-pdf me-2 text-primary"></i> <span id="fileName"></span>
+                        <i class="fa-solid fa-times ms-2 text-muted" style="cursor:pointer;" onclick="clearFile()"></i>
+                    </div>
+
+                    <input type="text" id="chatInput" class="chat-input" placeholder="Ask me anything about your research..." required autocomplete="off" style="flex: 1; background: transparent; border: none; box-shadow: none; color: white; padding: 10px 10px; outline: none; min-width: 0;">
                     
                     <div class="agent-selector-pill" style="display: flex; align-items: center; flex-shrink: 0;">
-                        <div class="custom-dropdown" id="agentDropdown">
                             <div class="dropdown-selected" onclick="toggleDropdown(event)">
                                 <span id="selectedAgentText"><i class="fa-solid fa-microscope me-2"></i> Research AI 1.0</span>
                                 <i class="fa-solid fa-chevron-down ms-2" style="font-size: 0.75rem;"></i>
