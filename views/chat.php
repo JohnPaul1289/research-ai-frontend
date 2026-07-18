@@ -275,7 +275,7 @@
             </div>
             <div class="engine-status">
                 <div class="status-dot"></div>
-                Engine Online (Mocked)
+                Engine Online
             </div>
         </div>
 
@@ -308,8 +308,8 @@
             <div class="input-wrapper" style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--glass-border); border-radius: 16px; padding: 6px; display: flex; align-items: center; gap: 8px; max-width: 900px; margin: 0 auto; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
                 <form id="chatForm" style="flex: 1; display: flex; align-items: center; gap: 8px; margin: 0; width: 100%;">
                     <input type="file" id="fileUpload" accept=".pdf,.csv,.txt" style="display: none;">
-                    <button type="button" class="btn btn-link text-white text-decoration-none px-2" onclick="document.getElementById('fileUpload').click()" title="Attach Document (PDF, CSV, TXT)" style="opacity: 0.7; transition: opacity 0.3s; flex-shrink: 0; font-size: 1.1rem;">
-                        <i class="fa-solid fa-paperclip"></i>
+                    <button type="button" class="btn btn-link text-white text-decoration-none px-3" onclick="document.getElementById('fileUpload').click()" title="Attach Document (PDF, CSV, TXT)" style="opacity: 0.9; transition: opacity 0.3s; flex-shrink: 0; font-size: 0.95rem; background: rgba(99,102,241,0.2); border-radius: 12px; border: 1px solid rgba(99,102,241,0.3); display: flex; align-items: center; gap: 6px;">
+                        <i class="fa-solid fa-paperclip"></i> Upload Doc
                     </button>
                     
                     <div id="filePreview" style="display: none; align-items: center; background: rgba(99,102,241,0.2); padding: 4px 10px; border-radius: 12px; font-size: 0.8rem; border: 1px solid rgba(99,102,241,0.3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 150px;">
