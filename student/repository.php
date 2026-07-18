@@ -32,6 +32,7 @@ $user = $_SESSION['user'];
         .search-box input:focus { background: rgba(15,23,42,0.8); border-color: var(--primary); outline: none; box-shadow: 0 0 0 4px rgba(99,102,241,0.15); }
         .search-box i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--text-muted); }
     </style>
+	<link rel="icon" href="/assets/img/logo.png" type="image/png">
 </head>
 <body>
 

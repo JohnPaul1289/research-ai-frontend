@@ -24,6 +24,7 @@ $user = $_SESSION['user'];
         .stat-card { background: rgba(15,23,42,0.6); border: 1px solid var(--glass-border); border-radius: 16px; padding: 20px; display: flex; align-items: center; gap: 20px; }
         .stat-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
     </style>
+	<link rel="icon" href="/assets/img/logo.png" type="image/png">
 </head>
 <body>
     <div class="orb orb-1"></div>

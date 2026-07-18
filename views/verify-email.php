@@ -19,6 +19,7 @@
         .resend-btn:hover { color: var(--secondary); }
         .resend-btn:disabled { color: var(--text-muted); cursor: not-allowed; opacity: 0.5; }
     </style>
+	<link rel="icon" href="/assets/img/logo.png" type="image/png">
 </head>
 <body>
     <div class="auth-wrapper">

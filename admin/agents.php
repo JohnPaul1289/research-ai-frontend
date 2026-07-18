@@ -20,6 +20,7 @@ $user = $_SESSION['user'];
         .pulse-dot { width: 10px; height: 10px; background: #10b981; border-radius: 50%; box-shadow: 0 0 10px #10b981; animation: pulse 2s infinite; }
         @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(16,185,129,0.7); } 70% { box-shadow: 0 0 0 10px rgba(16,185,129,0); } 100% { box-shadow: 0 0 0 0 rgba(16,185,129,0); } }
     </style>
+	<link rel="icon" href="/assets/img/logo.png" type="image/png">
 </head>
 <body>
     <div class="orb orb-1"></div>

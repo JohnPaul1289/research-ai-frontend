@@ -17,6 +17,7 @@
         .back-link a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
         .back-link a:hover { color: white; }
     </style>
+	<link rel="icon" href="/assets/img/logo.png" type="image/png">
 </head>
 <body>
     <div class="auth-wrapper">

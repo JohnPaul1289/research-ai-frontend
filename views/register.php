@@ -25,6 +25,7 @@
         .row-inputs { display: flex; gap: 18px; }
         .row-inputs .input-container { flex: 1; }
     </style>
+	<link rel="icon" href="/assets/img/logo.png" type="image/png">
 </head>
 <body>
     <div class="auth-wrapper">

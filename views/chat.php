@@ -257,6 +257,7 @@
             color: #818cf8;
         }
     </style>
+	<link rel="icon" href="/assets/img/logo.png" type="image/png">
 </head>
 <body>
     <!-- Sidebar -->
@@ -312,21 +313,18 @@
                     <div class="agent-selector-pill" style="display: flex; align-items: center; flex-shrink: 0;">
                         <div class="custom-dropdown" id="agentDropdown">
                             <div class="dropdown-selected" onclick="toggleDropdown(event)">
-                                <span id="selectedAgentText"><i class="fa-solid fa-microscope me-2"></i> Research Assistant</span>
+                                <span id="selectedAgentText"><i class="fa-solid fa-microscope me-2"></i> Research AI 1.0</span>
                                 <i class="fa-solid fa-chevron-down ms-2" style="font-size: 0.75rem;"></i>
                             </div>
                             <div class="dropdown-options" id="dropdownOptions">
-                                <div class="dropdown-option selected" onclick="selectAgent('Research Assistant', 'fa-microscope')">
-                                    <i class="fa-solid fa-microscope"></i> Research Assistant
+                                <div class="dropdown-option selected" onclick="selectAgent('Research AI 1.0', 'fa-microscope')">
+                                    <i class="fa-solid fa-microscope"></i> Research AI 1.0 (Gemini)
                                 </div>
-                                <div class="dropdown-option" onclick="selectAgent('Data Analyzer', 'fa-chart-pie')">
-                                    <i class="fa-solid fa-chart-pie"></i> Data Analyzer
-                                </div>
-                                <div class="dropdown-option" onclick="selectAgent('Literature Reviewer', 'fa-book-open')">
-                                    <i class="fa-solid fa-book-open"></i> Literature Reviewer
+                                <div class="dropdown-option" onclick="selectAgent('Llama 3.3 70B', 'fa-bolt')">
+                                    <i class="fa-solid fa-bolt"></i> Llama 3.3 70B
                                 </div>
                             </div>
-                            <input type="hidden" id="agentSelect" value="Research Assistant">
+                            <input type="hidden" id="agentSelect" name="agent" value="Research AI 1.0">
                         </div>
                     </div>
 

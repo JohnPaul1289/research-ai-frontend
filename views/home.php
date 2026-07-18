@@ -245,6 +245,7 @@
             .nav-links { gap: 1rem; }
         }
     </style>
+	<link rel="icon" href="/assets/img/logo.png" type="image/png">
 </head>
 <body>
 

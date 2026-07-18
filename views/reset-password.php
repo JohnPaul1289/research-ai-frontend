@@ -17,6 +17,7 @@
         .section-divider { border-top: 1px solid var(--glass-border); margin: 1.5rem 0; }
         .section-label { color: var(--text-muted); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
     </style>
+	<link rel="icon" href="/assets/img/logo.png" type="image/png">
 </head>
 <body>
     <div class="auth-wrapper">

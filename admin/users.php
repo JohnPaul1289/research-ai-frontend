@@ -35,6 +35,7 @@ $users = $response['users'] ?? [];
         .btn-action { background: rgba(255,255,255,0.05); color: white; border: 1px solid var(--glass-border); border-radius: 8px; padding: 6px 12px; transition: 0.3s; }
         .btn-action:hover { background: rgba(255,255,255,0.1); }
     </style>
+	<link rel="icon" href="/assets/img/logo.png" type="image/png">
 </head>
 <body>
     <div class="orb orb-1"></div>

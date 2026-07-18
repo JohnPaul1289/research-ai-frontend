@@ -26,6 +26,7 @@ $user = $_SESSION['user'];
         input:checked + .slider { background: linear-gradient(135deg, #ef4444, #b91c1c); border-color: rgba(239, 68, 68, 0.5); box-shadow: 0 0 15px rgba(239,68,68,0.4); }
         input:checked + .slider:before { transform: translateX(26px); background-color: white; }
     </style>
+	<link rel="icon" href="/assets/img/logo.png" type="image/png">
 </head>
 <body>
     <div class="orb orb-1"></div>

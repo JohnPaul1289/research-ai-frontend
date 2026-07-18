@@ -71,6 +71,7 @@
             border-radius: 12px;
         }
     </style>
+	<link rel="icon" href="/assets/img/logo.png" type="image/png">
 </head>
 <body>
     <div class="orb orb-1"></div>

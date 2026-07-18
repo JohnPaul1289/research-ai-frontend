@@ -22,6 +22,7 @@
         .register-link a::after { content: ''; position: absolute; width: 100%; transform: scaleX(0); height: 2px; bottom: -2px; left: 0; background-color: #60a5fa; transform-origin: bottom right; transition: transform 0.25s ease-out; }
         .register-link a:hover::after { transform: scaleX(1); transform-origin: bottom left; }
     </style>
+	<link rel="icon" href="/assets/img/logo.png" type="image/png">
 </head>
 <body>
     <div class="auth-wrapper">

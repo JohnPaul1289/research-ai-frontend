@@ -9,6 +9,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="/assets/css/premium-theme.css" rel="stylesheet">
     <link href="/assets/css/workspace-theme.css" rel="stylesheet">
+	<link rel="icon" href="/assets/img/logo.png" type="image/png">
 </head>
 <body>
 
