@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatContainer = document.getElementById('chatContainer');
     const typingIndicator = document.getElementById('typingIndicator');
     const sendBtn = document.getElementById('sendBtn');
+    let currentSessionId = null;
 
     chatForm.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -29,12 +30,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ message, agent })
+                body: JSON.stringify({ message, agent, session_id: currentSessionId })
             });
 
             const data = await response.json();
             
             typingIndicator.style.display = 'none';
+
+            if (data.session_id) {
+                currentSessionId = data.session_id;
+            }
 
             if (data.reply) {
                 appendMessage('ai', data.reply, data.agent);

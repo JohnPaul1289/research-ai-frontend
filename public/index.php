@@ -428,17 +428,22 @@ $router->post('/api/chat', function() {
     $agent = $data['agent'] ?? 'Research Assistant';
     $msg = htmlspecialchars($data['message']);
 
+    $session_id = $data['session_id'] ?? null;
+
     // Attempt to call the real Rust Engine first!
     $apiResponse = ApiClient::post('/api/chat', [
         'message' => $data['message'],
-        'agent' => $agent
+        'agent' => $agent,
+        'user_id' => Session::get('user_id'),
+        'session_id' => $session_id
     ]);
 
     if ($apiResponse && !isset($apiResponse['error'])) {
         // Real Engine Responded!
         $response = [
             'reply' => $apiResponse['reply'] ?? $apiResponse['response'] ?? "Error parsing engine response.",
-            'agent' => $agent
+            'agent' => $agent,
+            'session_id' => $apiResponse['session_id'] ?? null
         ];
     } else {
         // Strict failure if engine is down
