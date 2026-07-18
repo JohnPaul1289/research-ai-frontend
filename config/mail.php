@@ -11,7 +11,7 @@
 return [
     'smtp_host'     => 'smtp.gmail.com',
     'smtp_port'     => 587,
-    'smtp_username' => 'johnpaulgardoce7@gmail.com',   // Email added!
-    'smtp_password' => 'kkvliygrfeuxddkk',   // App password added!
+    'smtp_username' => getenv('SMTP_USERNAME') ?: '',
+    'smtp_password' => getenv('SMTP_PASSWORD') ?: '',
     'from_name'     => 'Research AI',
 ];

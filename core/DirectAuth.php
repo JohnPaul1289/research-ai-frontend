@@ -8,9 +8,9 @@ class DirectAuth {
 
     private static function getDB(): PDO {
         if (self::$pdo === null) {
-            $dsn = "pgsql:host=aws-0-ap-southeast-1.pooler.supabase.com;port=6543;dbname=postgres;sslmode=require";
-            $user = "postgres.newkzurvjqfdcmbsscet";
-            $password = "Johnpaulgardocce@1289";
+            $dsn = getenv('DB_DSN') ?: "pgsql:host=localhost;port=5432;dbname=postgres;sslmode=prefer";
+            $user = getenv('DB_USER') ?: "postgres";
+            $password = getenv('DB_PASSWORD') ?: "";
             
             self::$pdo = new PDO($dsn, $user, $password, [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
