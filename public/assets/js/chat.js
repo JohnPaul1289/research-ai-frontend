@@ -88,16 +88,14 @@ document.addEventListener('DOMContentLoaded', () => {
         chatContainer.insertBefore(div, typingIndicator);
         chatContainer.scrollTop = chatContainer.scrollHeight;
     }
-});
-
     // File Upload Logic
     const fileUpload = document.getElementById("fileUpload");
     const filePreview = document.getElementById("filePreview");
     const fileName = document.getElementById("fileName");
 
     window.clearFile = function() {
-        fileUpload.value = "";
-        filePreview.style.display = "none";
+        if(fileUpload) fileUpload.value = "";
+        if(filePreview) filePreview.style.display = "none";
     };
 
     if (fileUpload) {
@@ -139,4 +137,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-
+});

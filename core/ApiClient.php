@@ -1,10 +1,12 @@
 <?php
 
 class ApiClient {
-    private static string $baseUrl = 'https://research-ai-api.onrender.com'; // Rust backend URL
+    private static function getBaseUrl(): string {
+        return getenv('API_URL') ?: 'https://research-ai-api.onrender.com';
+    }
 
     public static function post(string $endpoint, array $data): ?array {
-        $url = self::$baseUrl . $endpoint;
+        $url = self::getBaseUrl() . $endpoint;
         
         $ch = curl_init($url);
         $jsonData = json_encode($data);
@@ -48,7 +50,7 @@ class ApiClient {
     }
     
     public static function get(string $endpoint): ?array {
-        $url = self::$baseUrl . $endpoint;
+        $url = self::getBaseUrl() . $endpoint;
         
         $ch = curl_init($url);
         

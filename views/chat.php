@@ -317,7 +317,7 @@
                         <i class="fa-solid fa-times ms-2 text-muted" style="cursor:pointer;" onclick="clearFile()"></i>
                     </div>
 
-                    <input type="text" id="chatInput" class="chat-input" placeholder="Ask me anything about your research..." required autocomplete="off" style="flex: 1; background: transparent; border: none; box-shadow: none; color: white; padding: 10px 10px; outline: none; min-width: 0;">
+                    <input type="text" id="chatInput" class="chat-input" placeholder="Ask me anything about your research..." autocomplete="off" style="flex: 1; background: transparent; border: none; box-shadow: none; color: white; padding: 10px 10px; outline: none; min-width: 0;">
                     
                     <div class="agent-selector-pill" style="display: flex; align-items: center; flex-shrink: 0;">
                             <div class="dropdown-selected" onclick="toggleDropdown(event)">
