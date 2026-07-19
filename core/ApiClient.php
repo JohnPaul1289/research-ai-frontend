@@ -32,7 +32,6 @@ class ApiClient {
         $response = curl_exec($ch);
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         $curlError = curl_error($ch);
-        curl_close($ch);
 
         if ($curlError) {
             error_log("ApiClient POST error: $curlError");
@@ -72,7 +71,6 @@ class ApiClient {
         $response = curl_exec($ch);
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         $curlError = curl_error($ch);
-        curl_close($ch);
 
         if ($curlError) {
             error_log("ApiClient GET error: $curlError");
